@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
+<!-- 2016-04-17T21:39:58 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r2" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="55d39fd6-ed09-42fe-919c-ba581ee9f087">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="prova"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="Data Pagamento" class="java.lang.String"/>
+	<field name="Nome Favorecido" class="java.lang.String"/>
+	<field name="Valor Pagamento" class="java.lang.String"/>
+	<sortField name="Data Pagamento"/>
+	<sortField name="Nome Favorecido"/>
+	<variable name="total_dia" class="java.lang.Double" resetType="Group" resetGroup="data" calculation="Sum">
+		<variableExpression><![CDATA[DOUBLE_VALUE($F{Valor Pagamento} )]]></variableExpression>
+	</variable>
+	<group name="data" isStartNewPage="true">
+		<groupHeader>
+			<band height="24">
+				<textField>
+					<reportElement x="0" y="0" width="100" height="20" uuid="6cca6174-0bd3-40ee-aa16-7df3f90237ca"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Data Pagamento}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="18">
+				<textField pattern="#,##0.00#">
+					<reportElement x="400" y="0" width="130" height="15" uuid="cab7d86f-343d-4008-82ab-03cb52b89ae1"/>
+					<textElement textAlignment="Right">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{total_dia}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="nome">
+		<groupExpression><![CDATA[$F{Nome Favorecido}]]></groupExpression>
+		<groupHeader>
+			<band height="23">
+				<textField>
+					<reportElement x="20" y="0" width="300" height="20" uuid="02c97778-b993-4dea-91d9-01f35fb03d1e"/>
+					<textFieldExpression><![CDATA[$F{Nome Favorecido}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="52" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="-20" y="-21" width="595" height="71" forecolor="#FFFB03" backcolor="#FFFB03" uuid="127b054e-b721-4473-84e3-11c79c064081"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="10" width="550" height="29" uuid="2860e4e1-6d97-416e-b323-84c97ff68db8"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gastos por dia]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="400" y="0" width="130" height="20" uuid="edaad104-b1cc-4014-bbff-ecb41f208447"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{Valor Pagamento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="37">
+			<textField>
+				<reportElement x="450" y="10" width="100" height="20" uuid="e5440709-e24b-4006-a874-a38083bf0b6e"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

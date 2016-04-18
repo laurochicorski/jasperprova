@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
+<!-- 2016-04-17T21:21:19 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="r3" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="113ed292-ec0f-4ccc-9adb-e8549a16a949">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="prova"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="Nome Unidade Gestora" class="java.lang.String"/>
+	<field name="Valor Pagamento" class="java.lang.String"/>
+	<variable name="total" class="java.lang.Double" resetType="Group" resetGroup="grupo" calculation="Sum">
+		<variableExpression><![CDATA[DOUBLE_VALUE( $F{Valor Pagamento})]]></variableExpression>
+	</variable>
+	<variable name="valor" class="java.lang.Double">
+		<variableExpression><![CDATA[DOUBLE_VALUE( $F{Valor Pagamento})]]></variableExpression>
+	</variable>
+	<group name="Nome Unidade Gestora">
+		<groupExpression><![CDATA[$F{Nome Unidade Gestora}]]></groupExpression>
+	</group>
+	<group name="grupo">
+		<groupExpression><![CDATA[$F{Nome Unidade Gestora}]]></groupExpression>
+		<groupHeader>
+			<band height="22">
+				<textField>
+					<reportElement x="0" y="0" width="280" height="20" uuid="036fae80-894e-435e-8df2-8a9edd92144c"/>
+					<textElement>
+						<font size="11" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Nome Unidade Gestora}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="23">
+				<textField pattern="¤#,##0.00;¤-#,##0.00">
+					<reportElement x="432" y="0" width="100" height="20" uuid="14e72b02-cf1f-45dc-9b88-8677bf170c89"/>
+					<textElement textAlignment="Right">
+						<font size="11" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="51" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="71" forecolor="#FFFB03" backcolor="#FFFB03" uuid="dcf18e1d-90c3-42cb-ac70-0d1f026ba937"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="11" width="550" height="29" uuid="7011e955-675e-40e7-85eb-63c37759184d"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gastos por Unidades Gestora]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="400" y="0" width="140" height="20" uuid="53bb0027-d8f9-44c3-b521-d3d81a221cfd"/>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Valor Pagamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="2" width="160" height="20" uuid="33948be7-6d03-4165-9788-456f651acf9c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Unidade Gestora]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField pattern="¤#,##0.00;¤-#,##0.00">
+				<reportElement x="432" y="0" width="100" height="20" uuid="517ef07f-4254-494e-a412-a898496370a3"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{valor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="31">
+			<textField>
+				<reportElement x="450" y="11" width="100" height="20" uuid="628c6378-b54a-43ef-ae84-86858fd5f594"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
